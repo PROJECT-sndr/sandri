@@ -65,7 +65,6 @@ PLATFORMS
 DEPENDENCIES
   discordrb
   dotenv
-  open3
 
 BUNDLED WITH
    2.6.7

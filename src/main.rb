@@ -92,7 +92,6 @@ sandri.command(:calc, description: "Sandri calculates your math! (Available oper
         if num2.zero?
           event.respond "❌ **Erro**: divisão por zero não é permitida"
         else
-          # Exibe resultado como float para divisões que não são exatas
           event.respond "#{num1} / #{num2} = #{num1.to_f / num2}"
         end
       when "%" 
