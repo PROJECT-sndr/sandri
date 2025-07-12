@@ -1,5 +1,5 @@
-require 'discordrb'
 require 'dotenv/load'
+require 'discordrb'
 
 token = ENV['TOKEN']
 prefix = ENV['PREFIX']
@@ -119,15 +119,15 @@ sandri.command(:clear, min_args: 0, max_args: 1, description: "Limpa uma quantid
   count = (count || 10).to_i
 
   begin 
-    messages = event.channel.history(count)
+    messages = event.channel.history(count + 1)
     if messages.empty?
       event.respond "``WARNING:`` Não há mensagens para apagar"
       next
     end
 
-    confirmation = event.respond "🗑️ Apagando #{messages.size} mensagens..."
+    confirmation = event.respond "🗑️ Apagando #{messages.size - 1} mensagens..."
     deleted_count = event.channel.delete_messages(messages)
-    temp_message = event.respond "✅ **#{deleted_count}** mensagens foram apagadas."
+    temp_message = event.respond "✅ **#{deleted_count - 1}** mensagens foram apagadas."
   rescue Discordrb::Errors::NoPermission
     event.respond "❌ **Erro**: Eu não tenho permissão para apagar mensagens neste canal."
   rescue => e 
